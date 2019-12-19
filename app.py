@@ -1,4 +1,5 @@
 from flask import Flask, render_template
+import random
 
 app = Flask(__name__)
 
@@ -80,13 +81,14 @@ errors = {
     799: "End of the world"
 }
 
+
 @app.route('/')
 def index():
-    return error(701)
+    return error(random.choice(list(errors)))
 
 
 def error(error_number):
-    return render_template('error.html', error_number=error_number, error_description="Test")
+    return render_template('error.html', error_number=error_number, error_description=errors[error_number])
 
 
 if __name__ == '__main__':
