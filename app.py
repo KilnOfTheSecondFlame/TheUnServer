@@ -35,7 +35,6 @@ errors = {
     737: "FuckThreadsing",
     738: "Fucking Exactly-once Delivery",
     739: "Fucking Windows",
-    738: "Fucking Exactly-once Delivery",
     750: "Didn't bother to compile it",
     753: "Syntax Error",
     754: "Too many semi-colons",
