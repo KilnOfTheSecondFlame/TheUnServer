@@ -1,4 +1,5 @@
 from flask import Flask, render_template
+from werkzeug.exceptions import HTTPException
 import random
 
 app = Flask(__name__)
@@ -86,9 +87,16 @@ def index():
     return error(random.choice(list(errors)))
 
 
-def error(error_number):
+def error_html(error_number):
     return render_template('error.html', error_number=error_number, error_description=errors[error_number])
 
 
+def error(error_code):
+    exception = HTTPException()
+    exception.description = errors[error_code]
+    exception.code = error_code
+    return exception
+
+
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=True, port=5000)
